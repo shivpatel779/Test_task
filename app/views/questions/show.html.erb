@@ -1,0 +1,26 @@
+<p>
+	<strong>Description:</strong>
+	<%= @question.description %></p>
+	<% @question.answers.each_with_index do | answer,index| %>
+		<div>
+			<h5>
+				answer <%= index+1 %>
+				<%= answer.text %>
+			</h5>
+
+			<p> Answered by:<%= answer.user.email rescue ""%> </p><i> 
+
+				<%= link_to 'follow user', "/follow_user/#{answer.user_id}" %>
+    
+
+		</div>
+	<% end %>
+
+  <%= form_tag question_answers_path(@question) , method: 'post' do  %>
+    <%= label_tag :text %>
+    <%= text_area_tag :text %></br>
+    <%= submit_tag "Submit Answer" %>
+
+  <% end %>
+
+</p>

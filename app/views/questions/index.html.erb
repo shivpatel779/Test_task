@@ -1,0 +1,4 @@
+
+<% @questions.each do | question | %>
+ <%= link_to question.description,question_path(question), method: :get %></br>
+<% end %>
